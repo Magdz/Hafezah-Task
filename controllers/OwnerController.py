@@ -8,10 +8,11 @@ class OwnerController:
         service = OwnerService()
         owner = service.auth(credentials)
         if not owner:
-            return None
+            return {
+                "error": "Unauthenticated"
+            }
 
         encoded_jwt = jwt.encode({"ownerId": owner.id}, 'secret', algorithm='HS256')
-        output = {
+        return {
             "token": 'Bearer ' + encoded_jwt 
         }
-        return output
