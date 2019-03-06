@@ -1,1 +1,2 @@
 from .OwnerRepository import OwnerRepository
+from .RestaurantRepository import RestaurantRepository
