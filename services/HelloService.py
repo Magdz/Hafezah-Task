@@ -1,7 +1,9 @@
+from ..repositories import OwnerRepository
 
 class HelloService:
-    def __init__(self, app):
-        self.app = app
+    def __init__(self):
+        pass
 
     def hello_world(self):
-        return "Hello World"
+        repository = OwnerRepository()
+        return repository.all()
