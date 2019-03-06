@@ -1,2 +1,1 @@
-from .HelloController import HelloController
 from .RestaurantController import RestaurantController

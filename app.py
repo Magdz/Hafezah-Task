@@ -3,12 +3,7 @@ from flask import request
 
 from . import app
 
-from controllers import HelloController, RestaurantController
-
-@app.route('/')
-def hello_world():
-    controller = HelloController()
-    return controller.hello_world()
+from controllers import RestaurantController
 
 @app.route('/restaurants/nearby', methods=['POST'])
 def nearby_restaurants():
