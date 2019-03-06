@@ -16,3 +16,10 @@ def auth_owner():
     controller = OwnerController()
     data = json.loads(request.data)
     return json.dumps(controller.auth_owner(data))
+
+@app.route('/restaurants', methods=['PATCH'])
+def edit_restaurant():
+    controller = RestaurantController()
+    data = json.loads(request.data)
+    token = request.headers.get('Authorization')
+    return json.dumps(controller.edit_restaurant(token, data))

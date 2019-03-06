@@ -3,8 +3,11 @@ from math import sin, cos, sqrt, atan2, radians
 from ..repositories import RestaurantRepository
 
 class RestaurantService:
-    def __init__(self):
-        pass
+    def update(self, ownerId, data):
+        repository = RestaurantRepository()
+        restaurant = repository.find_by_owner(ownerId)
+        restaurant = repository.update(restaurant, data)
+        return restaurant
 
     def list_nearby(self, data):
         repository = RestaurantRepository()

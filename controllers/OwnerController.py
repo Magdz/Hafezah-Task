@@ -12,7 +12,7 @@ class OwnerController:
                 "error": "Unauthenticated"
             }
 
-        encoded_jwt = jwt.encode({"ownerId": owner.id}, 'secret', algorithm='HS256')
+        token = jwt.encode({"ownerId": owner.id}, 'secret', algorithm='HS256')
         return {
-            "token": 'Bearer ' + encoded_jwt 
+            "token": 'Bearer ' + token 
         }
