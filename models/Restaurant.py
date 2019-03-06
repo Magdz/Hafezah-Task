@@ -7,7 +7,7 @@ class Restaurant(db.Model):
     phone_number = db.Column(db.String(20), nullable=True)
     longitude = db.Column(db.Float, nullable=False)
     latitude = db.Column(db.Float, nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey('owner.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('owner.id'), unique=True, nullable=False)
 
     def __repr__(self):
         return '<Restaurant %r>' % self.name
