@@ -5,5 +5,5 @@ class OwnerRepository:
     def __init__(self):
         pass
 
-    def all(self):
-        return Owner.query.all()
+    def find(self, username):
+        return Owner.query.filter_by(username=username).first_or_404()

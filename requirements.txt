@@ -1,5 +1,7 @@
 
 flask
+pyjwt
 dotenv
 pymsql
+flask-bcrypt
 flask_sqlalchemy
