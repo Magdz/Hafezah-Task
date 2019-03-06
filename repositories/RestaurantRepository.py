@@ -14,6 +14,8 @@ class RestaurantRepository:
     def update(self, restaurant, data):
         if 'name' in data:
             restaurant.name = data['name']
+        if 'logo' in data:
+            restaurant.logo = data['logo']    
         if 'phoneNumber' in data:
             restaurant.phone_number = data['phoneNumber']
         if 'longitude' in data:

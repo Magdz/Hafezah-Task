@@ -23,3 +23,10 @@ def edit_restaurant():
     data = json.loads(request.data)
     token = request.headers.get('Authorization')
     return json.dumps(controller.edit_restaurant(token, data))
+
+@app.route('/restaurants/logo/upload', methods=['POST'])
+def upload_logo():
+    controller = RestaurantController()
+    logo = request.files['logo']
+    token = request.headers.get('Authorization')
+    return json.dumps(controller.upload_logo(token, logo))

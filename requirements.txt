@@ -1,6 +1,7 @@
 
 flask
 pyjwt
+boto3
 dotenv
 pymsql
 flask-bcrypt
