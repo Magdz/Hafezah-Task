@@ -10,11 +10,10 @@ class RestaurantService:
         repository = RestaurantRepository()
         all_restaurants = repository.all()
         nearby_restaurants = self.__filter_nearby(data, all_restaurants)
-
         return nearby_restaurants
 
     def __filter_nearby(self, data, restaurants):
-        output = []
+        output = {}
         walkable_distance = 1
 
         radius = 6373.0
@@ -33,7 +32,7 @@ class RestaurantService:
 
             distance = radius * c
             if (distance <= walkable_distance):
-                output.append(restaurant)
+                output[distance] = (restaurant)
 
-        return output
+        return output.values()
         
