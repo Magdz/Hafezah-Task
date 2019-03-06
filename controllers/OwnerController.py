@@ -1,3 +1,4 @@
+import os
 import jwt
 import json
 
@@ -12,7 +13,7 @@ class OwnerController:
                 "error": "Unauthenticated"
             }
 
-        token = jwt.encode({"ownerId": owner.id}, 'secret', algorithm='HS256')
+        token = jwt.encode({"ownerId": owner.id}, os.getenv('JWT_SECRET'), algorithm=os.getenv('JWT_ALGORITHM'))
         return {
             "token": 'Bearer ' + token 
         }

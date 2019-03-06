@@ -8,5 +8,5 @@ class OwnerService:
         authenticated = bcrypt.check_password_hash(owner.password, credentials["password"])
         if not authenticated:
             return None
-        return owner 
+        return owner
     

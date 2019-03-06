@@ -1,3 +1,4 @@
+import os
 import jwt
 import json
 
@@ -13,7 +14,7 @@ class RestaurantController:
         return output
 
     def edit_restaurant(self, token, data):
-        payload = jwt.decode(token.replace('Bearer ', ''), 'secret', algorithms=['HS256'])
+        payload = jwt.decode(token.replace('Bearer ', ''), os.getenv('JWT_SECRET'), algorithms=[os.getenv('JWT_ALGORITHM')])
         service = RestaurantService()
         restaurant = service.update(payload['ownerId'], data)
         return self.__mapper(restaurant)
