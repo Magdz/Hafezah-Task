@@ -1,4 +1,9 @@
-from services import HelloService
+from ..services import HelloService
 
-def hello_world():
-    return HelloService.hello_world()
+class HelloController:
+    def __init__(self, app):
+        self.app = app
+
+    def hello_world(self):
+        service = HelloService(self.app)
+        return service.hello_world()
