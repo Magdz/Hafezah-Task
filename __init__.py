@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
-import models
+from .models import *
 
 db.create_all()
 

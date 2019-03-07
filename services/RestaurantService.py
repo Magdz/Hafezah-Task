@@ -29,7 +29,7 @@ class RestaurantService:
             )
             data['logo'] = 'http://{}.s3.amazonaws.com/{}'.format(bucket_name, logo.filename)
         except Exception as e:
-            print e
+            print(e)
             
         repository.update(restaurant, data)
         return restaurant

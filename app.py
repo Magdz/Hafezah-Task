@@ -2,8 +2,7 @@ import json
 from flask import request
 
 from . import app
-
-from controllers import OwnerController, RestaurantController
+from .controllers import OwnerController, RestaurantController
 
 @app.route('/restaurants/nearby', methods=['POST'])
 def nearby_restaurants():

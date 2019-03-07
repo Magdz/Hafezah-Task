@@ -2,7 +2,7 @@
 flask
 pyjwt
 boto3
-dotenv
-pymsql
+pymysql
 flask-bcrypt
+python-dotenv
 flask_sqlalchemy
