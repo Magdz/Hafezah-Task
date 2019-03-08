@@ -16,10 +16,12 @@ def auth_owner():
     data = json.loads(request.data)
     return json.dumps(controller.auth_owner(data))
 
-@app.route('/restaurants/nearby', methods=['POST'])
+@app.route('/restaurants/nearby', methods=['GET'])
 def nearby_restaurants():
     controller = RestaurantController()
-    data = json.loads(request.data)
+    data = {}
+    data['latitude'] = float(request.args.get('lat'))
+    data['longitude'] = float(request.args.get('long'))
     return json.dumps(controller.nearby_restaurants(data))
 
 @app.route('/restaurants', methods=['POST', 'PATCH'])
