@@ -6,3 +6,4 @@ pymysql
 flask-bcrypt
 python-dotenv
 flask_sqlalchemy
+flask-googlemaps

@@ -1,5 +1,6 @@
 import json
-from flask import request
+from flask_googlemaps import Map
+from flask import request, render_template
 
 from . import app
 from .controllers import OwnerController, RestaurantController
@@ -42,3 +43,26 @@ def upload_logo():
     logo = request.files['logo']
     token = request.headers.get('Authorization')
     return json.dumps(controller.upload_logo(token, logo))
+
+@app.route('/restaurants/direction', methods=['GET'])
+def direction_restaurant():
+    sndmap = Map(
+        identifier="sndmap",
+        lat=float(request.args.get('from_lat')),
+        lng=float(request.args.get('from_long')),
+        markers=[
+          {
+             'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+             'lat': float(request.args.get('from_lat')),
+             'lng': float(request.args.get('from_long')),
+             'infobox': "<b>From</b>"
+          },
+          {
+             'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+             'lat': float(request.args.get('to_lat')),
+             'lng': float(request.args.get('to_long')),
+             'infobox': "<b>To</b>"
+          }
+        ]
+    )
+    return render_template('map.html', sndmap=sndmap)

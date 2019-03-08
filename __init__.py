@@ -3,15 +3,18 @@ import boto3
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+from flask_googlemaps import GoogleMaps
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=".")
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['GOOGLEMAPS_KEY'] = os.getenv('GOOGLEMAPS_KEY')
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+GoogleMaps(app)
 
 from .models import *
 
