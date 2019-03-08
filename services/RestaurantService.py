@@ -5,6 +5,11 @@ from .. import s3
 from ..repositories import RestaurantRepository
 
 class RestaurantService:
+    def create(self, ownerId, data):
+        repository = RestaurantRepository()
+        restaurant = repository.create(ownerId, data)
+        return restaurant
+
     def update(self, ownerId, data):
         repository = RestaurantRepository()
         restaurant = repository.find_by_owner(ownerId)

@@ -13,6 +13,12 @@ class RestaurantController:
             output.append(self.__mapper(restaurant))
         return output
 
+    def create_restaurant(self, token, data):
+        payload = self.__get_payload(token)
+        service = RestaurantService()
+        restaurant = service.create(payload['ownerId'], data)
+        return self.__mapper(restaurant)
+
     def edit_restaurant(self, token, data):
         payload = self.__get_payload(token)
         service = RestaurantService()

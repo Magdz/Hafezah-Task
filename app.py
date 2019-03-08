@@ -22,12 +22,17 @@ def nearby_restaurants():
     data = json.loads(request.data)
     return json.dumps(controller.nearby_restaurants(data))
 
-@app.route('/restaurants', methods=['PATCH'])
-def edit_restaurant():
+@app.route('/restaurants', methods=['POST', 'PATCH'])
+def crud_restaurant():
     controller = RestaurantController()
     data = json.loads(request.data)
     token = request.headers.get('Authorization')
-    return json.dumps(controller.edit_restaurant(token, data))
+
+    if request.method == 'POST':
+        return json.dumps(controller.create_restaurant(token, data))
+    if request.method == 'PATCH':
+        return json.dumps(controller.edit_restaurant(token, data))
+    return json.dumps({})
 
 @app.route('/restaurants/logo/upload', methods=['POST'])
 def upload_logo():
