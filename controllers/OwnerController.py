@@ -11,7 +11,7 @@ class OwnerController:
         
         token = jwt.encode({"ownerId": owner.id}, os.getenv('JWT_SECRET'), algorithm=os.getenv('JWT_ALGORITHM'))
         return {
-            "token": 'Bearer ' + token 
+            "token": "Bearer {}".format(token.decode('utf-8'))
         }
 
     def auth_owner(self, credentials):
@@ -24,5 +24,5 @@ class OwnerController:
 
         token = jwt.encode({"ownerId": owner.id}, os.getenv('JWT_SECRET'), algorithm=os.getenv('JWT_ALGORITHM'))
         return {
-            "token": 'Bearer ' + token 
+            "token": "Bearer {}".format(token.decode('utf-8'))
         }
